@@ -15,14 +15,15 @@ devtools::install_github("vanleeuwen-hans/concertData")
 ```
 
 ## Usage
-Here are some basic examples of how to use the concertData package:
-
-Links to Quarto pages to be added
+Detailed examples of how to use the concertData package can be seen in the U2 Data Analytics report, for example:
+- [Basic Statisitics U2 Concerts](https://vanleeuwen-hans.github.io/u2_data_analytics/basic-stats-u2-concerts.html)
+- [Visual Exploration](https://vanleeuwen-hans.github.io/u2_data_analytics/visual-exploration-of-the-data.html)
+- [Multiple Setlist Alignment](https://vanleeuwen-hans.github.io/u2_data_analytics/multiple-setlist-alignment.html)
 
 ## Data
-Add link to Quarto page
+The data fame used by this package contains information about played songs at concerts. More info at [U2 Data Analytics](https://vanleeuwen-hans.github.io/u2_data_analytics/prepare-the-data.html#data-structure)
 
-> colnames(u2data)
+> colnames(concert_data)
 "showID"        "tour"          "leg"           "date"          "venue"         "city"          "state"         "country"       "song_position"
 "snippet"       "encore"        "song_title"    "show_url"      "song_url"      "song_lyrics"  
 
@@ -38,8 +39,9 @@ Contributions are welcome! If you'd like to contribute to concertData, please fo
 This project is licensed under the [Your License Name] - see the LICENSE file for details.
 
 ## Acknowledgments
-- Many thanks to Matthias Mühlbradt from u2gigs.com for allowing me to use their carefully colelcted u2 concert data.
-- Google for my the Google Data Analytics certification program for which this work was part of the Capstone Project
+- Many thanks to Matthias Mühlbradt from [u2gigs.com](https://www.u2gigs.com/) for allowing me to use their carefully collected u2 concert data.
+- Thanks to Google for the [Google Data Analytics certification program](https://www.coursera.org/professional-certificates/google-data-analytics) for which this work was part of my Capstone Project.
+- Thanks to the developers of [Claude.ai](https://claude.ai/) and [Perplexity.ai](https://www.perplexity.ai/), as these tools were very useful while developing and trouble shooting the code.
 
 ## Contact
-For questions or feedback, please contact Hans van Leeuwen at vanleeuwen.hansgmail.com.
+For questions or feedback, please contact Hans van Leeuwen at vanleeuwen@hansgmail.com.
