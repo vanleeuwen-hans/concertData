@@ -44,4 +44,4 @@ This project is licensed under the [Your License Name] - see the LICENSE file fo
 - Thanks to the developers of [Claude.ai](https://claude.ai/) and [Perplexity.ai](https://www.perplexity.ai/), as these tools were very useful while developing and trouble shooting the code.
 
 ## Contact
-For questions or feedback, please contact Hans van Leeuwen at vanleeuwen@hansgmail.com.
+For questions or feedback, please contact Hans van Leeuwen at vanleeuwen.hans@gmail.com.
