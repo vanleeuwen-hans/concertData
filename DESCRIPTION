@@ -17,5 +17,10 @@ Imports:
     tidyr,
     stats,
     stringdist,
-    stringr
+    stringr,
+    grDevices,
+    ggtree,
+    ggplot2,
+    tidygeocoder, 
+    readr
 URL: https://vanleeuwen-hans.github.io/concertData/

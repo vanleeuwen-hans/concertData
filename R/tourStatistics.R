@@ -1,17 +1,23 @@
-#' @title Find Longest Setlists
-#' @description This function identifies concerts with the maximum number of songs played
-#' from a concert dataset.
+#' @title Identify Concerts with the Longest Setlists
+#' @description This function identifies concerts that feature the highest number of songs played
+#' from a given concert dataset. It aggregates concerts by their date, city, country, and venue
+#' to determine which had the most songs performed.
 #'
-#' @param concert_data A data frame containing concert information with columns:
-#'        song_position, date, city, country, venue
+#' @param concert_data A data frame containing concert information with the following columns:
+#'        - `song_position`: The position of each song in the setlist.
+#'        - `date`: The date of the concert.
+#'        - `city`: The city where the concert took place.
+#'        - `country`: The country where the concert took place.
+#'        - `venue`: The venue of the concert.
 #'
-#' @return A data frame showing the concerts with the maximum number of songs,
-#'         including date, city, country, venue, and number of songs played
+#' @return A data frame containing details of concerts with the maximum number of songs played,
+#'         including columns for `date`, `city`, `country`, `venue`, and `Number of Songs Played`.
 #'
 #' @examples
 #' \dontrun{
 #' data <- read.csv("u2concerts.csv")
-#' find_longest_setlists(data)
+#' longest_setlists <- find_longest_setlists(data)
+#' print(longest_setlists)
 #' }
 #'
 #' @export
@@ -413,15 +419,24 @@ find_most_played_closing_songs <- function(concert_data, n = 10) {
 }
 
 #' @title Find Most Played Opening Songs by Tour
-#' @description Identifies the most frequently played opening songs for each tour.
+#' @description This function identifies the most frequently played opening songs for each tour,
+#'              returning a specified number of top songs based on their play counts.
 #'
-#' @param concert_data A data frame containing concert information with columns:
-#'        tour, date, song_title, song_position, and snippet
-#' @param top_n Integer specifying the maximum number of top opening songs to return per tour (default is 3)
+#' @param concert_data A data frame containing concert information with the following columns:
+#'        - `tour`: The name of the tour.
+#'        - `date`: The date of the concert.
+#'        - `song_title`: The title of the song performed.
+#'        - `song_position`: The position of the song in the setlist.
+#'        - `snippet`: Logical indicating whether the song was played as a snippet.
+#' @param top_n An integer specifying the maximum number of top opening songs to return per tour
+#'               (default is 3).
 #'
 #' @return A data frame sorted by tour start date (descending), containing columns:
-#'         tour, song_title, and times_played. For each tour, it returns up to 'top_n'
-#'         most played opening songs, or fewer if the tour has less unique opening songs.
+#'         - `tour`: The name of the tour.
+#'         - `song_title`: The title of the most played opening song.
+#'         - `times_played`: The number of times the song was played as an opening song.
+#'         For each tour, it returns up to `top_n` most played opening songs, or fewer if
+#'         the tour has less unique opening songs.
 #'
 #' @examples
 #' \dontrun{

@@ -153,21 +153,24 @@ concertData_remove_snippets <- function(data) {
 
 
 #' @title Order Tours by Date
-#' @description Orders tours based on their median date, either in ascending or descending chronological order.
+#' @description This function orders tours based on their median date, allowing for either
+#'              ascending or descending chronological order.
 #'
-#' @param data A data frame in concertData format, containing at least 'tour' and 'date' columns.
-#' @param ascending Logical. If TRUE, orders tours from earliest to latest. If FALSE (default), orders from latest to earliest.
+#' @param data A data frame in concertData format, containing at least the following columns:
+#'        - `tour`: The name of the tour.
+#'        - `date`: The date of each concert in the tour.
+#' @param ascending A logical value. If TRUE, tours are ordered from earliest to latest;
+#'                  if FALSE (default), they are ordered from latest to earliest.
 #'
-#' @return A data frame with columns:
-#'   \itemize{
-#'     \item tour: Factor of tour names, ordered chronologically
-#'     \item median_date: The median date of each tour
-#'   }
+#' @return A data frame with the following columns:
+#'   - `tour`: A factor of tour names, ordered chronologically.
+#'   - `median_date`: The median date of each tour.
 #'
 #' @examples
 #' \dontrun{
 #' tour_order <- tour_order_by_date(concert_data)
 #' tour_order_asc <- tour_order_by_date(concert_data, ascending = TRUE)
+#' print(tour_order)
 #' }
 #'
 #' @export
