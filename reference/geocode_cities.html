@@ -67,7 +67,10 @@ or by performing geocoding and saving the results to a file.</p>
 <span class="r-in"><span>  location <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"New York, USA"</span>, <span class="st">"London, UK"</span>, <span class="st">"Paris, France"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">geocoded_cities</span> <span class="op">&lt;-</span> <span class="fu">geocode_cities</span><span class="op">(</span><span class="va">geocoded_file_path</span>, <span class="va">unique_locations</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in value[[3L]](cond):</span> Geocoding error: there is no package called ‘tidygeocoder’</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Passing 3 addresses to the Nominatim single address geocoder</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Query completed in: 1.5 seconds</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Cannot open file for writing:</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> * 'path/to/geocoded_cities.csv'</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
