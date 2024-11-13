@@ -1,12 +1,15 @@
-#' @title Generate 4-Letter Code from Song Title
+#' @title Generate a Unique 4-Letter Code from a Song Title
 #'
 #' @description This function creates a unique 4-letter code for each song title.
-#' The generated code will be used for display in the multiple setlist alignment plot.
+#' The generated code is intended for use in displaying song titles in multiple setlist alignment plots,
+#' ensuring that each song can be uniquely identified with a concise code.
 #'
 #' @param title A character string representing the song title.
-#' @param used_codes A vector of already used codes to ensure uniqueness.
+#' @param used_codes A character vector of already used codes to ensure uniqueness.
 #'
 #' @return A character string of length 4 representing the unique code for the song.
+#'
+#' @importFrom stringr str_sub
 #'
 #' @examples
 #' \dontrun{
@@ -70,16 +73,28 @@ create_four_letter_code <- function(title, used_codes) {
 
 
 
-#' @title Convert 4-Letter Code to Unique Hex Character
+#' @title Convert a 4-Letter Code to a Unique Hex Character
+#'
+#' @description This function converts a 4-letter song code into a unique hex character.
+#' It checks against a list of already used hex codes to ensure that the generated hex character
+#' is unique. The function returns both the hex character and its numeric value.
 #'
 #' @param code A character string of length 4 representing the song code.
-#' @param used_hex_codes A vector of already used hex codes to ensure uniqueness.
+#' @param used_hex_codes A character vector of already used hex codes to ensure uniqueness.
 #'
 #' @return A list containing two elements:
 #'   \itemize{
 #'     \item char: A single character representing the unique hex character.
 #'     \item value: The numeric value of the hex character.
 #'   }
+#'
+#' @importFrom stringr str_sub
+#'
+#' @examples
+#' \dontrun{
+#' hex_info <- convert_code_to_hex("WOWY", c("0x41", "0x42"))
+#' print(hex_info)  # Output: List with char and value
+#' }
 #'
 #' @export
 four_letter_code_to_hex <- function(code, used_hex_codes) {
@@ -196,28 +211,33 @@ codify_tour_song_titles <- function(concert_data) {
 
 
 
-#' @title Prepare Setlist Sequences
+#' @title Prepare Setlist Sequences from Concert Data
 #'
 #' @description This function prepares setlist sequences from concert data and song codes.
-#' It creates a data frame with show IDs and their corresponding encoded setlist sequences.
+#' It creates a data frame that associates show IDs with their corresponding encoded setlist sequences,
+#' ensuring that each song title is mapped to its unique hexadecimal code.
 #'
 #' @param concert_data A data frame containing concert information with at least the following columns:
 #'   \itemize{
-#'     \item showID: Numeric identifier for each show
-#'     \item song_position: Numeric position of each song in the setlist
-#'     \item song_title: Character string of the song title
+#'     \item showID: Numeric identifier for each show.
+#'     \item song_position: Numeric position of each song in the setlist.
+#'     \item song_title: Character string of the song title.
 #'   }
 #' @param codes_tour_songs A data frame containing song codes with at least the following columns:
 #'   \itemize{
-#'     \item song_title: Character string of the song title
-#'     \item hex_value: Character string of the hexadecimal code for each song
+#'     \item song_title: Character string of the song title.
+#'     \item hex_value: Character string of the hexadecimal code for each song.
 #'   }
 #'
 #' @return A data frame with two columns:
 #'   \itemize{
-#'     \item showID: Character vector of show identifiers
-#'     \item sequence: Character vector of encoded setlist sequences
+#'     \item showID: Character vector of show identifiers.
+#'     \item sequence: Character vector of encoded setlist sequences.
 #'   }
+#'
+#' @importFrom base order
+#' @importFrom base tapply
+#' @importFrom base unname
 #'
 #' @examples
 #' \dontrun{

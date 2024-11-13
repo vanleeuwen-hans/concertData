@@ -26,9 +26,9 @@ calculate_distance_matrix <- function(sequences) {
   return(dist_matrix)
 }
 
-#' Create City Date Tree Labels
+#' @title reate City Date Tree Labels
 #'
-#' This function generates tree labels based on concert data, creating labels that combine city and date information.
+#' @description This function generates tree labels based on concert data, creating labels that combine city and date information.
 #' The input data must contain showIDs of the shows for which the distance tree is being created.
 #'
 #' @param concert_data A data frame containing concert information, including showID, city, date, country, and leg.
@@ -68,12 +68,24 @@ create_city_date_tree_labels <- function(concert_data, setlist_tree, show_info) 
 
 
 
-#' Create a ggtree Plot
+#' @title Generate a ggtree Plot from a Distance Tree
 #'
-#' This function generates a ggtree plot from a given distance tree.
+#' @description This function generates a ggtree plot from a given distance tree object.
+#' It utilizes the `ggtree` package to create a visual representation of the phylogenetic tree,
+#' including tips and customized themes for better visualization.
 #'
-#' @param setlist_tree A distance tree object to be plotted.
-#' @return A ggtree plot object.
+#' @param setlist_tree A distance tree object (of class `phylo` or `hclust`) to be plotted.
+#'
+#' @return A `ggtree` plot object that can be printed or further customized.
+#'
+#' @importFrom ggtree ggtree
+#' @importFrom ggtree geom_tiplab
+#' @importFrom ggtree theme_tree2
+#' @importFrom ggplot2 theme
+#' @importFrom ggplot2 margin
+#' @importFrom ggplot2 coord_cartesian
+#' @importFrom ggplot2 scale_x_continuous
+#'
 #' @examples
 #' library(ggtree)
 #' # Example tree structure (replace with actual tree object)
@@ -97,14 +109,28 @@ create_ggtree_plot <- function(setlist_tree) {
 }
 
 
-#' Create a ggtree Plot with Colored Tips
+#' @title Generate a ggtree Plot with Colored Tips
 #'
-#' This function generates a ggtree plot from a given concert setlists distance tree, with tree tips colored by either country or leg.
+#' @description This function generates a ggtree plot from a given concert setlists distance tree.
+#' The tree tips are colored based on either country or leg, allowing for visual differentiation
+#' of the tips in the plot.
 #'
-#' @param setlist_tree A concert setlists distance tree object to be plotted.
+#' @param setlist_tree A concert setlists distance tree object (of class `phylo` or `hclust`) to be plotted.
 #' @param show_info A data frame containing show information, including city-date, country, and leg.
-#' @param color_by A string indicating whether to color tips by "country" or "leg".
-#' @return A ggtree plot object with colored tips.
+#' @param color_by A string indicating whether to color tips by "country" or "leg". Default is "country".
+#'
+#' @return A `ggtree` plot object with colored tips based on the specified grouping.
+#'
+#' @importFrom ggtree ggtree
+#' @importFrom ggtree geom_tiplab
+#' @importFrom ggtree geom_tippoint
+#' @importFrom ggtree theme_tree2
+#' @importFrom ggplot2 scale_color_manual
+#' @importFrom ggplot2 theme
+#' @importFrom ggplot2 margin
+#' @importFrom ggplot2 coord_cartesian
+#' @importFrom ggplot2 scale_x_continuous
+#'
 #' @examples
 #' library(ggtree)
 #' # Example tree structure (replace with actual tree object)
@@ -112,7 +138,7 @@ create_ggtree_plot <- function(setlist_tree) {
 #' show_info <- data.frame(city_date = paste("City", 1:10),
 #'                          country = sample(c("USA", "Canada"), 10, replace = TRUE),
 #'                          leg = sample(c("Leg 1", "Leg 2"), 10, replace = TRUE))
-#' plot <- create_colored_ggtree_plot(setlist_tree, show_info, color_by = "country")
+#' plot <- create_ggtree_plot_colored(setlist_tree, show_info, color_by = "country")
 #' print(plot)
 #' @export
 create_ggtree_plot_colored <- function(setlist_tree, show_info, color_by = c("country", "leg")) {
