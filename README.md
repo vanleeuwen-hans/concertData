@@ -40,4 +40,4 @@ This project is licensed under the GNU General Public License v3 - see the LICEN
 
 ## Contact
 
-For questions or feedback, please contact Hans van Leeuwen at [hans.data.universe\@gmail.com](mailto:hans.data.universe@gmail.com){.email}.
+For questions or feedback, please contact Hans van Leeuwen at [hans.data.universe\@gmail.com](mailto:hans.data.universe@gmail.com).
