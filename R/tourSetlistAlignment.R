@@ -330,6 +330,65 @@ find_most_representative_setlists <- function(show_sequences_all, n_representati
 }
 
 
+
+#' Find Most Representative Setlists using K-means Clustering
+#'
+#' This function identifies a specified number of shows that represent the variety
+#' of setlists in the dataset, using k-means clustering.
+#'
+#' @param show_sequences_all A data frame containing at least two columns:
+#'   \itemize{
+#'     \item sequence: A character vector of setlist sequences.
+#'     \item Other columns containing show information.
+#'   }
+#' @param n_representatives An integer specifying the number of representative setlists to find. Default is 30.
+#'
+#' @return A data frame containing the most representative setlists,
+#'         with the same structure as the input data frame.
+#'
+#' @importFrom stringdist stringdistmatrix
+#' @importFrom stats kmeans
+#' @importFrom utils head
+#'
+#' @examples
+#' \dontrun{
+#' # Assuming show_sequences_all is your dataset
+#' representative_shows <- find_representative_setlists_kmeans(show_sequences_all, n_representatives = 30)
+#' print(representative_shows)
+#' }
+#'
+#' @export
+find_representative_setlists_kmeans <- function(show_sequences_all, n_representatives = 30) {
+  # Check if required packages are available
+  if (!requireNamespace("stringdist", quietly = TRUE)) {
+    stop("Package 'stringdist' is required but not installed. Please install it.")
+  }
+
+  # Calculate distance matrix using Levenshtein distance
+  dist_matrix <- stringdist::stringdistmatrix(show_sequences_all$sequence,
+                                              show_sequences_all$sequence,
+                                              method = "lv")
+
+  # Convert distance matrix to a similarity matrix
+  similarity_matrix <- 1 / (1 + dist_matrix)
+
+  # Perform k-means clustering
+  set.seed(123)  # for reproducibility
+  kmeans_result <- kmeans(similarity_matrix, centers = n_representatives)
+
+  # Find the setlist closest to each cluster center
+  representative_indices <- sapply(1:n_representatives, function(i) {
+    cluster_members <- which(kmeans_result$cluster == i)
+    cluster_center <- kmeans_result$centers[i,]
+    closest_to_center <- which.max(similarity_matrix[cluster_members, cluster_members] %*% cluster_center)
+    return(cluster_members[closest_to_center])
+  })
+
+  # Return the most representative setlists
+  return(show_sequences_all[representative_indices, ])
+}
+
+
 #' @title Create FASTA Format for MAFFT Alignment
 #'
 #' @description This function creates a FASTA format output from representative setlists
