@@ -359,32 +359,29 @@ find_most_representative_setlists <- function(show_sequences_all, n_representati
 #'
 #' @export
 find_representative_setlists_kmeans <- function(show_sequences_all, n_representatives = 30) {
-  # Check if required packages are available
   if (!requireNamespace("stringdist", quietly = TRUE)) {
     stop("Package 'stringdist' is required but not installed. Please install it.")
   }
 
-  # Calculate distance matrix using Levenshtein distance
   dist_matrix <- stringdist::stringdistmatrix(show_sequences_all$sequence,
                                               show_sequences_all$sequence,
                                               method = "lv")
 
-  # Convert distance matrix to a similarity matrix
   similarity_matrix <- 1 / (1 + dist_matrix)
 
-  # Perform k-means clustering
-  set.seed(123)  # for reproducibility
+  set.seed(123)
   kmeans_result <- kmeans(similarity_matrix, centers = n_representatives)
 
-  # Find the setlist closest to each cluster center
   representative_indices <- sapply(1:n_representatives, function(i) {
     cluster_members <- which(kmeans_result$cluster == i)
-    cluster_center <- kmeans_result$centers[i,]
-    closest_to_center <- which.max(similarity_matrix[cluster_members, cluster_members] %*% cluster_center)
+    if (length(cluster_members) == 1) {
+      return(cluster_members)
+    }
+    cluster_center <- kmeans_result$centers[i, cluster_members]
+    closest_to_center <- which.max(colSums(similarity_matrix[cluster_members, cluster_members, drop = FALSE] * cluster_center))
     return(cluster_members[closest_to_center])
   })
 
-  # Return the most representative setlists
   return(show_sequences_all[representative_indices, ])
 }
 
