@@ -2,7 +2,7 @@
 % Please edit documentation in R/tourSetlistDistanceTree.R
 \name{create_ggtree_plot_colored}
 \alias{create_ggtree_plot_colored}
-\title{Create a ggtree Plot with Colored Tips}
+\title{Generate a ggtree Plot with Colored Tips}
 \usage{
 create_ggtree_plot_colored(
   setlist_tree,
@@ -11,17 +11,19 @@ create_ggtree_plot_colored(
 )
 }
 \arguments{
-\item{setlist_tree}{A concert setlists distance tree object to be plotted.}
+\item{setlist_tree}{A concert setlists distance tree object (of class `phylo` or `hclust`) to be plotted.}
 
 \item{show_info}{A data frame containing show information, including city-date, country, and leg.}
 
-\item{color_by}{A string indicating whether to color tips by "country" or "leg".}
+\item{color_by}{A string indicating whether to color tips by "country" or "leg". Default is "country".}
 }
 \value{
-A ggtree plot object with colored tips.
+A `ggtree` plot object with colored tips based on the specified grouping.
 }
 \description{
-This function generates a ggtree plot from a given concert setlists distance tree, with tree tips colored by either country or leg.
+This function generates a ggtree plot from a given concert setlists distance tree.
+The tree tips are colored based on either country or leg, allowing for visual differentiation
+of the tips in the plot.
 }
 \examples{
 library(ggtree)
@@ -30,6 +32,6 @@ setlist_tree <- rtree(10)  # Generate a random tree with 10 tips
 show_info <- data.frame(city_date = paste("City", 1:10),
                          country = sample(c("USA", "Canada"), 10, replace = TRUE),
                          leg = sample(c("Leg 1", "Leg 2"), 10, replace = TRUE))
-plot <- create_colored_ggtree_plot(setlist_tree, show_info, color_by = "country")
+plot <- create_ggtree_plot_colored(setlist_tree, show_info, color_by = "country")
 print(plot)
 }

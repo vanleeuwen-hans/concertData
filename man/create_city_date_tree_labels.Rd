@@ -2,7 +2,7 @@
 % Please edit documentation in R/tourSetlistDistanceTree.R
 \name{create_city_date_tree_labels}
 \alias{create_city_date_tree_labels}
-\title{Create City Date Tree Labels}
+\title{reate City Date Tree Labels}
 \usage{
 create_city_date_tree_labels(concert_data, setlist_tree, show_info)
 }

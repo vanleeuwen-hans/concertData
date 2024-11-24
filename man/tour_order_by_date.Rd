@@ -7,24 +7,27 @@
 tour_order_by_date(data, ascending = FALSE)
 }
 \arguments{
-\item{data}{A data frame in concertData format, containing at least 'tour' and 'date' columns.}
+\item{data}{A data frame in concertData format, containing at least the following columns:
+- `tour`: The name of the tour.
+- `date`: The date of each concert in the tour.}
 
-\item{ascending}{Logical. If TRUE, orders tours from earliest to latest. If FALSE (default), orders from latest to earliest.}
+\item{ascending}{A logical value. If TRUE, tours are ordered from earliest to latest;
+if FALSE (default), they are ordered from latest to earliest.}
 }
 \value{
-A data frame with columns:
-  \itemize{
-    \item tour: Factor of tour names, ordered chronologically
-    \item median_date: The median date of each tour
-  }
+A data frame with the following columns:
+  - `tour`: A factor of tour names, ordered chronologically.
+  - `median_date`: The median date of each tour.
 }
 \description{
-Orders tours based on their median date, either in ascending or descending chronological order.
+This function orders tours based on their median date, allowing for either
+             ascending or descending chronological order.
 }
 \examples{
 \dontrun{
 tour_order <- tour_order_by_date(concert_data)
 tour_order_asc <- tour_order_by_date(concert_data, ascending = TRUE)
+print(tour_order)
 }
 
 }

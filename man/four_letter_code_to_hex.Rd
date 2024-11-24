@@ -2,14 +2,14 @@
 % Please edit documentation in R/tourSetlistAlignment.R
 \name{four_letter_code_to_hex}
 \alias{four_letter_code_to_hex}
-\title{Convert 4-Letter Code to Unique Hex Character}
+\title{Convert a 4-Letter Code to a Unique Hex Character}
 \usage{
 four_letter_code_to_hex(code, used_hex_codes)
 }
 \arguments{
 \item{code}{A character string of length 4 representing the song code.}
 
-\item{used_hex_codes}{A vector of already used hex codes to ensure uniqueness.}
+\item{used_hex_codes}{A character vector of already used hex codes to ensure uniqueness.}
 }
 \value{
 A list containing two elements:
@@ -19,5 +19,14 @@ A list containing two elements:
   }
 }
 \description{
-Convert 4-Letter Code to Unique Hex Character
+This function converts a 4-letter song code into a unique hex character.
+It checks against a list of already used hex codes to ensure that the generated hex character
+is unique. The function returns both the hex character and its numeric value.
+}
+\examples{
+\dontrun{
+hex_info <- convert_code_to_hex("WOWY", c("0x41", "0x42"))
+print(hex_info)  # Output: List with char and value
+}
+
 }

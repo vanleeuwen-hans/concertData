@@ -2,18 +2,20 @@
 % Please edit documentation in R/tourSetlistDistanceTree.R
 \name{create_ggtree_plot}
 \alias{create_ggtree_plot}
-\title{Create a ggtree Plot}
+\title{Generate a ggtree Plot from a Distance Tree}
 \usage{
 create_ggtree_plot(setlist_tree)
 }
 \arguments{
-\item{setlist_tree}{A distance tree object to be plotted.}
+\item{setlist_tree}{A distance tree object (of class `phylo` or `hclust`) to be plotted.}
 }
 \value{
-A ggtree plot object.
+A `ggtree` plot object that can be printed or further customized.
 }
 \description{
-This function generates a ggtree plot from a given distance tree.
+This function generates a ggtree plot from a given distance tree object.
+It utilizes the `ggtree` package to create a visual representation of the phylogenetic tree,
+including tips and customized themes for better visualization.
 }
 \examples{
 library(ggtree)

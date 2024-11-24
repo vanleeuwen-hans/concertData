@@ -7,18 +7,27 @@
 find_most_played_opening_songs_by_tour(concert_data, top_n = 3)
 }
 \arguments{
-\item{concert_data}{A data frame containing concert information with columns:
-tour, date, song_title, song_position, and snippet}
+\item{concert_data}{A data frame containing concert information with the following columns:
+- `tour`: The name of the tour.
+- `date`: The date of the concert.
+- `song_title`: The title of the song performed.
+- `song_position`: The position of the song in the setlist.
+- `snippet`: Logical indicating whether the song was played as a snippet.}
 
-\item{top_n}{Integer specifying the maximum number of top opening songs to return per tour (default is 3)}
+\item{top_n}{An integer specifying the maximum number of top opening songs to return per tour
+(default is 3).}
 }
 \value{
 A data frame sorted by tour start date (descending), containing columns:
-        tour, song_title, and times_played. For each tour, it returns up to 'top_n'
-        most played opening songs, or fewer if the tour has less unique opening songs.
+        - `tour`: The name of the tour.
+        - `song_title`: The title of the most played opening song.
+        - `times_played`: The number of times the song was played as an opening song.
+        For each tour, it returns up to `top_n` most played opening songs, or fewer if
+        the tour has less unique opening songs.
 }
 \description{
-Identifies the most frequently played opening songs for each tour.
+This function identifies the most frequently played opening songs for each tour,
+             returning a specified number of top songs based on their play counts.
 }
 \examples{
 \dontrun{

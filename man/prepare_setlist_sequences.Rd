@@ -2,34 +2,35 @@
 % Please edit documentation in R/tourSetlistAlignment.R
 \name{prepare_setlist_sequences}
 \alias{prepare_setlist_sequences}
-\title{Prepare Setlist Sequences}
+\title{Prepare Setlist Sequences from Concert Data}
 \usage{
 prepare_setlist_sequences(concert_data, codes_tour_songs)
 }
 \arguments{
 \item{concert_data}{A data frame containing concert information with at least the following columns:
 \itemize{
-  \item showID: Numeric identifier for each show
-  \item song_position: Numeric position of each song in the setlist
-  \item song_title: Character string of the song title
+  \item showID: Numeric identifier for each show.
+  \item song_position: Numeric position of each song in the setlist.
+  \item song_title: Character string of the song title.
 }}
 
 \item{codes_tour_songs}{A data frame containing song codes with at least the following columns:
 \itemize{
-  \item song_title: Character string of the song title
-  \item hex_value: Character string of the hexadecimal code for each song
+  \item song_title: Character string of the song title.
+  \item hex_value: Character string of the hexadecimal code for each song.
 }}
 }
 \value{
 A data frame with two columns:
   \itemize{
-    \item showID: Character vector of show identifiers
-    \item sequence: Character vector of encoded setlist sequences
+    \item showID: Character vector of show identifiers.
+    \item sequence: Character vector of encoded setlist sequences.
   }
 }
 \description{
 This function prepares setlist sequences from concert data and song codes.
-It creates a data frame with show IDs and their corresponding encoded setlist sequences.
+It creates a data frame that associates show IDs with their corresponding encoded setlist sequences,
+ensuring that each song title is mapped to its unique hexadecimal code.
 }
 \examples{
 \dontrun{

@@ -2,26 +2,32 @@
 % Please edit documentation in R/tourStatistics.R
 \name{find_longest_setlists}
 \alias{find_longest_setlists}
-\title{Find Longest Setlists}
+\title{Identify Concerts with the Longest Setlists}
 \usage{
 find_longest_setlists(concert_data)
 }
 \arguments{
-\item{concert_data}{A data frame containing concert information with columns:
-song_position, date, city, country, venue}
+\item{concert_data}{A data frame containing concert information with the following columns:
+- `song_position`: The position of each song in the setlist.
+- `date`: The date of the concert.
+- `city`: The city where the concert took place.
+- `country`: The country where the concert took place.
+- `venue`: The venue of the concert.}
 }
 \value{
-A data frame showing the concerts with the maximum number of songs,
-        including date, city, country, venue, and number of songs played
+A data frame containing details of concerts with the maximum number of songs played,
+        including columns for `date`, `city`, `country`, `venue`, and `Number of Songs Played`.
 }
 \description{
-This function identifies concerts with the maximum number of songs played
-from a concert dataset.
+This function identifies concerts that feature the highest number of songs played
+from a given concert dataset. It aggregates concerts by their date, city, country, and venue
+to determine which had the most songs performed.
 }
 \examples{
 \dontrun{
 data <- read.csv("u2concerts.csv")
-find_longest_setlists(data)
+longest_setlists <- find_longest_setlists(data)
+print(longest_setlists)
 }
 
 }

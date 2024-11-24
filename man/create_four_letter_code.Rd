@@ -2,21 +2,22 @@
 % Please edit documentation in R/tourSetlistAlignment.R
 \name{create_four_letter_code}
 \alias{create_four_letter_code}
-\title{Generate 4-Letter Code from Song Title}
+\title{Generate a Unique 4-Letter Code from a Song Title}
 \usage{
 create_four_letter_code(title, used_codes)
 }
 \arguments{
 \item{title}{A character string representing the song title.}
 
-\item{used_codes}{A vector of already used codes to ensure uniqueness.}
+\item{used_codes}{A character vector of already used codes to ensure uniqueness.}
 }
 \value{
 A character string of length 4 representing the unique code for the song.
 }
 \description{
 This function creates a unique 4-letter code for each song title.
-The generated code will be used for display in the multiple setlist alignment plot.
+The generated code is intended for use in displaying song titles in multiple setlist alignment plots,
+ensuring that each song can be uniquely identified with a concise code.
 }
 \examples{
 \dontrun{
