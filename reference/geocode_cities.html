@@ -20,6 +20,7 @@ or by performing geocoding and saving the results to a file."></head><body>
       <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/vanleeuwen-hans/concertData/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
 
 
@@ -29,7 +30,7 @@ or by performing geocoding and saving the results to a file."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Geocode Cities</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/vanleeuwen-hans/concertData/blob/main/R/tourWorldMaps.R" class="external-link"><code>R/tourWorldMaps.R</code></a></small>
       <div class="d-none name"><code>geocode_cities.Rd</code></div>
     </div>
 
@@ -68,7 +69,7 @@ or by performing geocoding and saving the results to a file.</p>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">geocoded_cities</span> <span class="op">&lt;-</span> <span class="fu">geocode_cities</span><span class="op">(</span><span class="va">geocoded_file_path</span>, <span class="va">unique_locations</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Passing 3 addresses to the Nominatim single address geocoder</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Query completed in: 1.5 seconds</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Query completed in: 1.9 seconds</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Cannot open file for writing:</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> * 'path/to/geocoded_cities.csv'</span>
 </code></pre></div>
