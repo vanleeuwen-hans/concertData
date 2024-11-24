@@ -1,7 +1,7 @@
 Package: concertData
 Type: Package
 Title: Analyse and visualise concert tour song data
-Version: 0.1.1
+Version: 0.2.1
 Author: Hans van Leeuwen
 Maintainer: Hans van Leeuwen <hans.data.universe@gmail.com>
 Description: Functions used in the U2 Data Analysitcs project to load, process, calculate, query and visualize concert data
